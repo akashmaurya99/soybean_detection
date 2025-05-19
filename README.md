@@ -72,55 +72,127 @@ This tool addresses a critical need in agricultural management by providing earl
 <div align="center">
 
 ```mermaid
+%%{
+  init: {
+    'theme': 'base',
+    'themeVariables': {
+      'primaryColor': '#34495e',
+      'primaryTextColor': '#ecf0f1',
+      'primaryBorderColor': '#2c3e50',
+      'lineColor': '#2c3e50',
+      'secondaryColor': '#16a085',
+      'tertiaryColor': '#2ecc71'
+    }
+  }
+}%%
+
 flowchart TD
-    subgraph User[User Interface]
-        A[Camera/Gallery] -->|Image Capture| B[Input Image]
+    %% Define node shapes and icons
+    A["📷 Image Acquisition"] :::acquisition
+    B["🖼️ Input Image"] :::acquisition
+    C{"🔍 Leaf Validation"} :::validation
+    D["⚙️ Preprocessing"] :::preprocess
+    E["✅ Normalized Image"] :::preprocess
+    F["🧠 TensorFlow Inference"] :::ml
+    G["🏷️ Classification"] :::ml
+    H{"📊 Confidence Score"} :::ml
+    I["🦠 Disease Identification"] :::results
+    J["💊 Treatment Plan"] :::results
+    K["📤 Share Results"] :::results
+    Z["❌ Request New Image"] :::error
+
+    %% Define the workflow connections with better labels
+    A -->|"User captures"| B
+    B -->|"Submit for analysis"| C
+    
+    %% Add decision point for validation
+    C -->|"Valid soybean leaf"| D
+    C -->|"Not a soybean leaf"| Z
+    Z -->|"Try again"| A
+    
+    %% Image preprocessing steps
+    D -->|"• Resize (224×224)
+    • RGB normalization
+    • Mean subtraction"| E
+    
+    %% ML workflow steps with improved descriptions
+    E -->|"Forward pass"| F
+    F -->|"7-class output"| G
+    G -->|"Probability vector"| H
+    
+    %% Results pathway with decision point
+    H -->|"High confidence (>70%)"| I
+    H -->|"Low confidence"| Z
+    I -->|"Generate"| J
+    J -->|"Export"| K
+
+    %% Define subgraphs with improved titles and styling
+    subgraph User["👤 User Interaction"]
+        A
+        B
     end
     
-    subgraph Processing[Image Processing]
-        B --> C[Image Validation]
-        C -->|Valid Soybean Leaf| D[Image Preprocessing]
-        C -->|Invalid Image| Z[Request New Image]
-        Z --> A
-        D -->|Resize 224×224<br>Normalize<br>RGB Conversion| E[Preprocessed Image]
+    subgraph Processing["🔄 Image Processing Pipeline"]
+        C
+        D
+        E
+        Z
     end
     
-    subgraph ML[Machine Learning]
-        E --> F[TensorFlow Lite Inference]
-        F --> G[Disease Classification]
-        G --> H[Confidence Scoring]
+    subgraph ML["🧪 Machine Learning Engine"]
+        F
+        G
+        H
     end
     
-    subgraph Results[Results & Recommendations]
-        H -->|Confidence > 0.7| I[Disease Identification]
-        H -->|Low Confidence| Z
-        I --> J[Treatment Recommendations]
-        J --> K[Save/Share Results]
+    subgraph Results["📊 Results & Recommendations"]
+        I
+        J
+        K
     end
+
+    %% Custom styling classes for a professional look
+    classDef acquisition fill:#3498db,stroke:#2980b9,color:#fff,stroke-width:2px
+    classDef validation fill:#f39c12,stroke:#e67e22,color:#fff,stroke-width:2px,stroke-dasharray: 5 5
+    classDef preprocess fill:#1abc9c,stroke:#16a085,color:#fff,stroke-width:2px
+    classDef ml fill:#9b59b6,stroke:#8e44ad,color:#fff,stroke-width:2px
+    classDef results fill:#2ecc71,stroke:#27ae60,color:#fff,stroke-width:2px
+    classDef error fill:#e74c3c,stroke:#c0392b,color:#fff,stroke-width:2px
     
-    %% Styling for better visual appearance
-    classDef userInterface fill:#e0f7fa,stroke:#006064,stroke-width:2px
-    classDef processing fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    classDef mlSection fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef results fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    %% Link styling
+    linkStyle default stroke:#34495e,stroke-width:2px,fill:none
     
-    class A,B userInterface
-    class C,D,E,Z processing
-    class F,G,H mlSection
+    %% Apply styles to nodes
+    class A,B acquisition
+    class C validation
+    class D,E preprocess
+    class F,G,H ml
     class I,J,K results
+    class Z error
+    
+    %% Style the subgraphs
+    style User fill:#3498db15,stroke:#3498db,stroke-width:2px,color:#3498db,stroke-dasharray: 0
+    style Processing fill:#1abc9c15,stroke:#1abc9c,stroke-width:2px,color:#1abc9c,stroke-dasharray: 0
+    style ML fill:#9b59b615,stroke:#9b59b6,stroke-width:2px,color:#9b59b6,stroke-dasharray: 0
+    style Results fill:#2ecc7115,stroke:#2ecc71,stroke-width:2px,color:#2ecc71,stroke-dasharray: 0
 ```
 
 </div>
 
-The workflow diagram above illustrates the end-to-end process of the application:
+The interactive workflow diagram above illustrates the sophisticated end-to-end process of the Soybean Disease Detection system:
 
-1. **Image Acquisition**: User captures a photo or selects from gallery
-2. **Preprocessing**: Image is resized, normalized, and prepared for analysis 
-3. **ML Inference**: TensorFlow Lite model processes the image
-4. **Disease Classification**: System identifies the disease category
-5. **Confidence Calculation**: Prediction confidence is assessed
-6. **Result Presentation**: User is shown the disease diagnosis with recommendations
-7. **Treatment Guidance**: Precautionary measures are provided based on diagnosis
+### Process Flow Explanation
+
+| Stage | Process | Description |
+|-------|---------|-------------|
+| 📱 **Input** | Image Acquisition | User captures a photo using device camera or selects from gallery |
+| 🔍 **Validation** | Leaf Detection | AI validates that the image contains a soybean leaf |
+| ⚙️ **Preprocessing** | Image Transformation | Image is resized to 224×224 pixels, normalized, and color-corrected |
+| 🧠 **Analysis** | TensorFlow Inference | Deep learning model processes the normalized image data |
+| 🏷️ **Classification** | Disease Identification | Neural network classifies the image into one of 7 disease categories |
+| 📊 **Confidence** | Quality Assessment | System determines reliability of prediction (threshold: 70%) |
+| 📋 **Results** | Diagnosis Presentation | User receives detailed disease identification with confidence level |
+| 💊 **Guidance** | Treatment Recommendations | System provides scientifically-backed disease management strategies |
 
 ## 💻 Technologies Used
 
