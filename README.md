@@ -70,7 +70,46 @@ This tool addresses a critical need in agricultural management by providing earl
 ## 🔄 System Workflow
 
 <div align="center">
-  <img src="assets/images/workflow_diagram.png" alt="Soybean Disease Detection Workflow">
+
+```mermaid
+flowchart TD
+    subgraph User[User Interface]
+        A[Camera/Gallery] -->|Image Capture| B[Input Image]
+    end
+    
+    subgraph Processing[Image Processing]
+        B --> C[Image Validation]
+        C -->|Valid Soybean Leaf| D[Image Preprocessing]
+        C -->|Invalid Image| Z[Request New Image]
+        Z --> A
+        D -->|Resize 224×224<br>Normalize<br>RGB Conversion| E[Preprocessed Image]
+    end
+    
+    subgraph ML[Machine Learning]
+        E --> F[TensorFlow Lite Inference]
+        F --> G[Disease Classification]
+        G --> H[Confidence Scoring]
+    end
+    
+    subgraph Results[Results & Recommendations]
+        H -->|Confidence > 0.7| I[Disease Identification]
+        H -->|Low Confidence| Z
+        I --> J[Treatment Recommendations]
+        J --> K[Save/Share Results]
+    end
+    
+    %% Styling for better visual appearance
+    classDef userInterface fill:#e0f7fa,stroke:#006064,stroke-width:2px
+    classDef processing fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    classDef mlSection fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef results fill:#f3e5f5,stroke:#6a1b9a,stroke-width:2px
+    
+    class A,B userInterface
+    class C,D,E,Z processing
+    class F,G,H mlSection
+    class I,J,K results
+```
+
 </div>
 
 The workflow diagram above illustrates the end-to-end process of the application:
