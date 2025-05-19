@@ -61,7 +61,7 @@ This tool addresses a critical need in agricultural management by providing earl
     </tr>
     <tr>
       <td align="center"><b>Home Screen</b></td>
-      <td align="center"><b>Analysis Process</b></td>
+      <td align="center"><b>Disease Results</b></td>
       <td align="center"><b>Disease Results</b></td>
     </tr>
   </table>
@@ -72,34 +72,20 @@ This tool addresses a critical need in agricultural management by providing earl
 <div align="center">
 
 ```mermaid
-%%{
-  init: {
-    'theme': 'base',
-    'themeVariables': {
-      'primaryColor': '#34495e',
-      'primaryTextColor': '#ecf0f1',
-      'primaryBorderColor': '#2c3e50',
-      'lineColor': '#2c3e50',
-      'secondaryColor': '#16a085',
-      'tertiaryColor': '#2ecc71'
-    }
-  }
-}%%
-
 flowchart TD
     %% Define node shapes and icons
-    A["📷 Image Acquisition"] :::acquisition
-    B["🖼️ Input Image"] :::acquisition
-    C{"🔍 Leaf Validation"} :::validation
-    D["⚙️ Preprocessing"] :::preprocess
-    E["✅ Normalized Image"] :::preprocess
-    F["🧠 TensorFlow Inference"] :::ml
-    G["🏷️ Classification"] :::ml
-    H{"📊 Confidence Score"} :::ml
-    I["🦠 Disease Identification"] :::results
-    J["💊 Treatment Plan"] :::results
-    K["📤 Share Results"] :::results
-    Z["❌ Request New Image"] :::error
+    A["📷 Image Acquisition"]
+    B["🖼️ Input Image"]
+    C{"🔍 Leaf Validation"}
+    D["⚙️ Preprocessing"]
+    E["✅ Normalized Image"]
+    F["🧠 TensorFlow Inference"]
+    G["🏷️ Classification"]
+    H{"📊 Confidence Score"}
+    I["🦠 Disease Identification"]
+    J["💊 Treatment Plan"]
+    K["📤 Share Results"]
+    Z["❌ Request New Image"]
 
     %% Define the workflow connections with better labels
     A -->|"User captures"| B
@@ -111,9 +97,7 @@ flowchart TD
     Z -->|"Try again"| A
     
     %% Image preprocessing steps
-    D -->|"• Resize (224×224)
-    • RGB normalization
-    • Mean subtraction"| E
+    D -->|"Resize, normalize, convert"| E
     
     %% ML workflow steps with improved descriptions
     E -->|"Forward pass"| F
@@ -132,14 +116,14 @@ flowchart TD
         B
     end
     
-    subgraph Processing["🔄 Image Processing Pipeline"]
+    subgraph Processing["🔄 Image Processing"]
         C
         D
         E
         Z
     end
     
-    subgraph ML["🧪 Machine Learning Engine"]
+    subgraph ML["🧪 Machine Learning"]
         F
         G
         H
@@ -151,30 +135,25 @@ flowchart TD
         K
     end
 
-    %% Custom styling classes for a professional look
-    classDef acquisition fill:#3498db,stroke:#2980b9,color:#fff,stroke-width:2px
-    classDef validation fill:#f39c12,stroke:#e67e22,color:#fff,stroke-width:2px,stroke-dasharray: 5 5
-    classDef preprocess fill:#1abc9c,stroke:#16a085,color:#fff,stroke-width:2px
-    classDef ml fill:#9b59b6,stroke:#8e44ad,color:#fff,stroke-width:2px
-    classDef results fill:#2ecc71,stroke:#27ae60,color:#fff,stroke-width:2px
-    classDef error fill:#e74c3c,stroke:#c0392b,color:#fff,stroke-width:2px
-    
-    %% Link styling
-    linkStyle default stroke:#34495e,stroke-width:2px,fill:none
-    
-    %% Apply styles to nodes
-    class A,B acquisition
-    class C validation
-    class D,E preprocess
-    class F,G,H ml
-    class I,J,K results
-    class Z error
+    %% Style nodes by type
+    style A fill:#3498db,stroke:#2980b9,color:#fff
+    style B fill:#3498db,stroke:#2980b9,color:#fff
+    style C fill:#f39c12,stroke:#e67e22,color:#fff
+    style D fill:#1abc9c,stroke:#16a085,color:#fff
+    style E fill:#1abc9c,stroke:#16a085,color:#fff
+    style F fill:#9b59b6,stroke:#8e44ad,color:#fff
+    style G fill:#9b59b6,stroke:#8e44ad,color:#fff
+    style H fill:#9b59b6,stroke:#8e44ad,color:#fff
+    style I fill:#2ecc71,stroke:#27ae60,color:#fff
+    style J fill:#2ecc71,stroke:#27ae60,color:#fff
+    style K fill:#2ecc71,stroke:#27ae60,color:#fff
+    style Z fill:#e74c3c,stroke:#c0392b,color:#fff
     
     %% Style the subgraphs
-    style User fill:#3498db15,stroke:#3498db,stroke-width:2px,color:#3498db,stroke-dasharray: 0
-    style Processing fill:#1abc9c15,stroke:#1abc9c,stroke-width:2px,color:#1abc9c,stroke-dasharray: 0
-    style ML fill:#9b59b615,stroke:#9b59b6,stroke-width:2px,color:#9b59b6,stroke-dasharray: 0
-    style Results fill:#2ecc7115,stroke:#2ecc71,stroke-width:2px,color:#2ecc71,stroke-dasharray: 0
+    style User fill:#d6eaf8,stroke:#3498db,color:#3498db
+    style Processing fill:#d5f5e3,stroke:#1abc9c,color:#1abc9c
+    style ML fill:#e8daef,stroke:#9b59b6,color:#9b59b6
+    style Results fill:#d4efdf,stroke:#2ecc71,color:#2ecc71
 ```
 
 </div>
