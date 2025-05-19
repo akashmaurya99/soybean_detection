@@ -310,7 +310,7 @@ lib/
   </tr>
   <tr>
     <td>Model Size</td>
-    <td>~8MB</td>
+    <td>~59MB</td>
     <td>Optimized for mobile deployment</td>
   </tr>
   <tr>
