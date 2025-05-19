@@ -29,7 +29,7 @@
 - [Usage](#-usage)
 - [Project Structure](#-project-structure)
 - [Performance](#-performance)
-- [Future Enhancements](#-future-enhancements)
+
 - [Contributors](#-contributors)
 - [License](#-license)
 
@@ -70,7 +70,7 @@ This tool addresses a critical need in agricultural management by providing earl
 ## 🔄 System Workflow
 
 <div align="center">
-  <img src="https://mermaid.ink/img/pako:eNp1ksFuwjAMhl_FymlTtRN3DtDRbdJ62A7bZcfQmtKoaVKRBCGNefeF0gKlWy6J_X-2f8vJkSojJOHkw57LFdxmmACCQ3XGPMnxjgl6KnYnOhc6UgkWa92XsDK9PxYLPyebM8wLHPqK_L6vQdygjou205d_-sJbdViDW7046ngwGT6axtoX3GP0MPj2PsgC1zai0qGGLh5rZ1dOVthUmbQqCkrpKqNU8C6kel1OvahNTQEL8StxMB1PLqsvmO3lu3f7pGbBrrjoJ4NLbrXGay678tOPN095EvzBRnavaWVL5_7jmgsrzHR8AZW0I7C0sqjE35RwDL7FUtUe46ze8uYKkFdizcmJ2LnAI1cJJaD1lE3JMR3RmFxNJqOP-fS1WOZzLvvDpVeXanLOeJ8eq489OfUNVqecmg" alt="Soybean Disease Detection Workflow">
+  <img src="assets/images/workflow_diagram.png" alt="Soybean Disease Detection Workflow">
 </div>
 
 The workflow diagram above illustrates the end-to-end process of the application:
@@ -325,53 +325,11 @@ lib/
   </tr>
 </table>
 
-## 🔮 Future Enhancements
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><b>⚙️ Technical</b></td>
-      <td align="center"><b>🌱 Agricultural</b></td>
-      <td align="center"><b>👥 User Experience</b></td>
-    </tr>
-    <tr>
-      <td>
-        • Cloud synchronization<br>
-        • Offline model updates<br>
-        • Performance optimization<br>
-        • Web platform support
-      </td>
-      <td>
-        • Severity assessment<br>
-        • Growth stage analysis<br>
-        • Pest detection<br>
-        • Yield impact prediction
-      </td>
-      <td>
-        • Multi-language support<br>
-        • Customizable dashboards<br>
-        • User accounts<br>
-        • Treatment tracking
-      </td>
-    </tr>
-  </table>
-</div>
 
 ## 👨‍💻 Contributors
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/akashmaurya99">
-        <img src="https://github.com/akashmaurya99.png" width="100px;" alt="Akash Maurya"/>
-        <br />
-        <sub><b>Akash Maurya</b></sub>
-      </a>
-      <br />
-      <sub>Lead Developer</sub>
-    </td>
-  </tr>
-</table>
+- **Akash Maurya** - Lead Developer ([@akashmaurya99](https://github.com/akashmaurya99))
 
 ## 📄 License
 
